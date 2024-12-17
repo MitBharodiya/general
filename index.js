@@ -6,10 +6,14 @@ const socketio = require('socket.io');
 const server =http.createServer(app);
 const io = socketio(server);
 
-
 app.set("view engin","ejs");
 app.set(express.static(path.join(__dirname,"public")))
-;app.get("/demo",(req,res)=>{
+
+io.on("connection",function(socket){
+    console.log("Connected");
+})
+
+app.get("/demo",(req,res)=>{
     console.log("its home page");    
     res.send("its home page");    
 });
